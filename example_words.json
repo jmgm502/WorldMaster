@@ -1,0 +1,44 @@
+{
+  "words": [
+    {
+      "word": "apple",
+      "phonetic": "/ˈæpl/",
+      "definition": "苹果；一种红色、绿色或黄色的圆形水果，有坚硬的皮和清脆多汁的果肉。",
+      "example": "An apple a day keeps the doctor away.",
+      "translation": "一天一苹果，医生远离我。",
+      "imageURL": ""
+    },
+    {
+      "word": "book",
+      "phonetic": "/bʊk/",
+      "definition": "书；由纸张或电子屏幕组成的文本和/或图片的集合。",
+      "example": "I'm reading an interesting book about artificial intelligence.",
+      "translation": "我正在读一本关于人工智能的有趣的书。",
+      "imageURL": ""
+    },
+    {
+      "word": "computer",
+      "phonetic": "/kəmˈpjuːtər/",
+      "definition": "计算机；一种电子设备，可以存储、检索和处理数据。",
+      "example": "She uses her computer to write code and develop applications.",
+      "translation": "她使用计算机编写代码和开发应用程序。",
+      "imageURL": ""
+    },
+    {
+      "word": "dictionary",
+      "phonetic": "/ˈdɪkʃəneri/",
+      "definition": "词典；一本列出单词及其含义、发音和用法的书籍。",
+      "example": "If you don't know the meaning of a word, look it up in a dictionary.",
+      "translation": "如果你不知道一个单词的意思，可以在词典中查找。",
+      "imageURL": ""
+    },
+    {
+      "word": "elephant",
+      "phonetic": "/ˈelɪfənt/",
+      "definition": "大象；一种大型哺乳动物，有长鼻子和大耳朵。",
+      "example": "The elephant is the largest land animal on Earth.",
+      "translation": "大象是地球上最大的陆地动物。",
+      "imageURL": ""
+    }
+  ]
+}
