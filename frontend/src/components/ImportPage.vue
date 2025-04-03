@@ -14,7 +14,7 @@ const importStatus = ref({
 const openFileDialog = async () => {
   try {
     const result = await OpenFileDialog('选择单词JSON文件', {
-      'JSON文件': ['json','txt']
+      'JSON文件': ['*.json', '*.txt']
     });
     if (result) {
       filePath.value = result;

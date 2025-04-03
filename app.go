@@ -81,6 +81,7 @@ func (a *App) startup(ctx context.Context) {
 	if err != nil {
 		runtime.LogErrorf(ctx, "Failed to initialize audio service: %v", err)
 	}
+	a.audioService.SetContext(ctx) // 设置音频服务的上下文
 
 	// 初始化图片服务
 	a.imageService, err = services.NewImageService(a.imageDir)

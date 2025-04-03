@@ -64,10 +64,35 @@ const loadWordResources = async () => {
 };
 
 // 播放发音
-const playPronunciation = () => {
+const playPronunciation = async () => {
+  if (!audioUrl.value) {
+    // 如果没有音频URL，尝试重新加载
+    loadingAudio.value = true;
+    try {
+      const result = await GetPronunciation(currentWord.value?.word || '');
+      audioUrl.value = result;
+    } catch (error) {
+      console.error('Failed to load pronunciation:', error);
+      message.value = '加载发音失败！';
+      return;
+    } finally {
+      loadingAudio.value = false;
+    }
+  }
+
   if (audioUrl.value) {
     const audio = new Audio(audioUrl.value);
-    audio.play();
+    audio.onerror = () => {
+      console.error('Failed to play audio');
+      message.value = '播放发音失败！';
+    };
+    audio.oncanplaythrough = () => {
+      // 音频可以播放时，自动播放
+      audio.play().catch(error => {
+        console.error('Failed to play audio:', error);
+        message.value = '播放发音失败！';
+      });
+    };
   }
 };
 
@@ -146,12 +171,6 @@ onMounted(() => {
         </button>
       </div>
 
-      <div class="image-section">
-        <div v-if="loadingImage" class="loading-image">加载图片中...</div>
-        <img v-else-if="imageUrl" :src="imageUrl" alt="Word image" class="word-image" />
-        <div v-else class="no-image">无图片</div>
-      </div>
-
       <div class="definition-section">
         <button class="toggle-button" @click="toggleDefinition">
           {{ showDefinition ? '隐藏释义' : '显示释义' }}
@@ -159,6 +178,12 @@ onMounted(() => {
         <div v-if="showDefinition" class="definition">
           {{ currentWord.definition }}
         </div>
+      </div>
+
+      <div class="image-section">
+        <div v-if="loadingImage" class="loading-image">加载图片中...</div>
+        <img v-else-if="imageUrl" :src="imageUrl" alt="Word image" class="word-image" />
+        <div v-else class="no-image">无图片</div>
       </div>
 
       <div class="example-section">
@@ -345,6 +370,7 @@ onMounted(() => {
   border-radius: 4px;
   font-size: 1.1rem;
   line-height: 1.6;
+  color: #2c3e50; /* 添加深色文本颜色，确保在浅色背景上可见 */
 }
 
 .example-text {
